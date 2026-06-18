@@ -1,0 +1,6 @@
+{
+  "name": "Legado",
+  "description": "An elite Swiss-tier digital legacy preservation platform featuring secure bento vaults, voice memoir studios, AI narrative creators, and legacy companion agents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
