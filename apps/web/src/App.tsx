@@ -3,6 +3,9 @@ import LandingPage from './pages/LandingPage';
 import { MainLayout } from './components/MainLayout';
 import { HomeDashboard } from './pages/HomeDashboard';
 import { VaultDashboard } from './pages/VaultDashboard';
+import { ArchivePage } from './pages/ArchivePage';
+import { InterviewsPage } from './pages/InterviewsPage';
+import { SettingsPage } from './pages/SettingsPage';
 import { Marketplace } from './pages/Marketplace';
 import { PublicProfile } from './pages/PublicProfile';
 import { StoryBuilder } from './pages/StoryBuilder';
@@ -26,6 +29,21 @@ export default function App() {
         <Route path="/vault" element={
           <MainLayout>
             <VaultDashboard />
+          </MainLayout>
+        } />
+        <Route path="/archive" element={
+          <MainLayout>
+            <ArchivePage />
+          </MainLayout>
+        } />
+        <Route path="/interviews" element={
+          <MainLayout>
+            <InterviewsPage />
+          </MainLayout>
+        } />
+        <Route path="/settings" element={
+          <MainLayout>
+            <SettingsPage />
           </MainLayout>
         } />
         

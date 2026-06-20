@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -8,15 +8,34 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+  const [newType, setNewType] = useState('Photo');
+  const [newDate, setNewDate] = useState('');
+  const [newDesc, setNewDesc] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
   const navItems = [
-    { name: 'Home', path: '/', icon: 'home' },
+    { name: 'Home', path: '/home', icon: 'home' },
     { name: 'Vault', path: '/vault', icon: 'account_balance_wallet' },
     { name: 'Archive', path: '/archive', icon: 'archive' },
     { name: 'Interviews', path: '/interviews', icon: 'mic' },
     { name: 'Story Builder', path: '/story-builder', icon: 'auto_stories' },
     { name: 'Marketplace', path: '/marketplace', icon: 'storefront' },
   ];
+
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newTitle) return;
+    setSuccessMsg('Entry successfully registered and processed by Legacy AI!');
+    setTimeout(() => {
+      setSuccessMsg('');
+      setIsModalOpen(false);
+      setNewTitle('');
+      setNewDate('');
+      setNewDesc('');
+    }, 2000);
+  };
 
   return (
     <div className="antialiased min-h-screen flex bg-paper-surface dark:bg-surface text-ink-text dark:text-inverse-on-surface">
@@ -27,7 +46,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           <p className="text-label-sm font-label-sm text-muted-ink mt-1 uppercase tracking-wider">Knowledge Preservation</p>
         </div>
         
-        <button className="mx-6 py-3 px-4 bg-ink-text text-on-primary rounded-lg flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors duration-200 ease-in-out font-label-md text-label-md">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="mx-6 py-3 px-4 bg-ink-text text-on-primary rounded-lg flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors duration-200 ease-in-out font-label-md text-label-md"
+        >
           <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>add</span>
           New Entry
         </button>
@@ -109,6 +131,82 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           {children}
         </div>
       </main>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-paper-surface border border-border-subtle rounded-lg p-6 max-w-md w-full shadow-lg flex flex-col gap-4 text-ink-text">
+            <h2 className="font-headline-md text-headline-md font-bold">New Vault Entry</h2>
+            
+            {successMsg ? (
+              <div className="bg-green-100 dark:bg-green-950/30 text-green-800 dark:text-green-400 p-4 rounded text-center font-label-md text-label-md border border-green-200">
+                {successMsg}
+              </div>
+            ) : (
+              <form onSubmit={handleSave} className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <label className="font-label-sm text-label-sm text-muted-ink uppercase">Title</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Boda de mis abuelos"
+                    value={newTitle}
+                    onChange={(e) => setNewTitle(e.target.value)}
+                    className="p-2 border border-border-subtle rounded bg-surface focus:outline-none focus:border-outline text-body-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="font-label-sm text-label-sm text-muted-ink uppercase">Type</label>
+                  <select
+                    value={newType}
+                    onChange={(e) => setNewType(e.target.value)}
+                    className="p-2 border border-border-subtle rounded bg-surface focus:outline-none focus:border-outline text-body-md text-ink-text"
+                  >
+                    <option value="Photo">Photo</option>
+                    <option value="Video">Video</option>
+                    <option value="Audio">Audio</option>
+                    <option value="Document">Document</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="font-label-sm text-label-sm text-muted-ink uppercase">Date</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 1950"
+                    value={newDate}
+                    onChange={(e) => setNewDate(e.target.value)}
+                    className="p-2 border border-border-subtle rounded bg-surface focus:outline-none focus:border-outline text-body-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="font-label-sm text-label-sm text-muted-ink uppercase">Description</label>
+                  <textarea
+                    rows={3}
+                    placeholder="Describe this artifact..."
+                    value={newDesc}
+                    onChange={(e) => setNewDesc(e.target.value)}
+                    className="p-2 border border-border-subtle rounded bg-surface focus:outline-none focus:border-outline text-body-md resize-none"
+                  />
+                </div>
+                <div className="flex justify-end gap-2 mt-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 border border-border-subtle rounded hover:bg-surface-container-low text-label-md font-label-md"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-ink-text text-white rounded hover:bg-opacity-90 text-label-md font-label-md"
+                  >
+                    Save Entry
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

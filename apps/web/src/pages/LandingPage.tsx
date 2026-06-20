@@ -1,52 +1,33 @@
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../index.css";
 
 export default function App() {
-  useEffect(() => {
-    // Basic font loading
-    const link1 = document.createElement('link');
-    link1.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap';
-    link1.rel = 'stylesheet';
-    
-    const link2 = document.createElement('link');
-    link2.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap';
-    link2.rel = 'stylesheet';
-
-    document.head.appendChild(link1);
-    document.head.appendChild(link2);
-
-    return () => {
-      document.head.removeChild(link1);
-      document.head.removeChild(link2);
-    };
-  }, []);
-
   return (
     <div className="bg-paper-surface text-ink-text antialiased min-h-screen">
       {/* TopNavBar Component */}
       <nav className="sticky bg-background dark:bg-tertiary w-full top-0 border-b border-border-subtle dark:border-outline-variant z-50">
         <div className="flex justify-between items-center px-8 py-4 w-full max-w-container-max mx-auto">
-          <div className="font-headline-md text-headline-md font-bold text-ink-text dark:text-on-primary tracking-tight">
+          <Link to="/home" className="font-headline-md text-headline-md font-bold text-ink-text dark:text-on-primary tracking-tight">
             Legado
-          </div>
+          </Link>
           <div className="hidden md:flex space-x-8 items-center">
-            <a className="font-label-sm text-label-sm text-ink-text dark:text-on-primary font-bold border-b-2 border-heritage-gold pb-1 opacity-80 transition-opacity" href="#">
+            <Link className="font-label-sm text-label-sm text-ink-text dark:text-on-primary font-bold border-b-2 border-heritage-gold pb-1 opacity-80 transition-opacity" to="/vault">
               Human Vault
-            </a>
-            <a className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" href="#">
+            </Link>
+            <Link className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" to="/marketplace">
               Legacy AI
-            </a>
-            <a className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" href="#">
+            </Link>
+            <Link className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" to="/archive">
               The Archive
-            </a>
-            <a className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" href="#">
+            </Link>
+            <Link className="font-label-sm text-label-sm text-muted-ink dark:text-on-surface-variant hover:text-ink-text dark:hover:text-on-primary transition-colors duration-200" to="/story-builder">
               Editorial
-            </a>
+            </Link>
           </div>
           <div className="flex items-center">
-            <button className="bg-ink-text text-on-primary px-6 py-2 rounded-DEFAULT font-label-sm text-label-sm hover:opacity-90 transition-opacity uppercase tracking-wider cursor-pointer">
+            <Link to="/vault" className="bg-ink-text text-on-primary px-6 py-2 rounded font-label-sm text-label-sm hover:opacity-90 transition-opacity uppercase tracking-wider cursor-pointer">
               Comenzar
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -68,12 +49,12 @@ export default function App() {
               Una bóveda editorial y plataforma de inteligencia artificial diseñada para capturar, estructurar y asegurar el conocimiento humano de alto valor para las generaciones futuras.
             </p>
             <div className="flex items-center space-x-4 pt-4">
-              <button className="bg-ink-text text-on-primary px-8 py-4 rounded-DEFAULT font-label-sm text-label-sm hover:opacity-90 transition-opacity uppercase tracking-wider cursor-pointer">
+              <Link to="/vault" className="bg-ink-text text-on-primary px-8 py-4 rounded font-label-sm text-label-sm hover:opacity-90 transition-opacity uppercase tracking-wider cursor-pointer text-center">
                 Comenzar Archivo
-              </button>
-              <button className="border border-border-subtle bg-transparent text-ink-text px-8 py-4 rounded-DEFAULT font-label-sm text-label-sm hover:bg-surface-container-low transition-colors uppercase tracking-wider cursor-pointer">
+              </Link>
+              <Link to="/vault" className="border border-border-subtle bg-transparent text-ink-text px-8 py-4 rounded font-label-sm text-label-sm hover:bg-surface-container-low transition-colors uppercase tracking-wider cursor-pointer text-center">
                 Explorar Bóveda
-              </button>
+              </Link>
             </div>
           </div>
           <div className="md:col-span-5 relative h-[500px] w-full mt-12 md:mt-0">
@@ -161,9 +142,9 @@ export default function App() {
             <p className="font-body-lg text-body-lg text-on-primary-container">
               Comienza a documentar tu legado hoy con la precisión que merece tu historia.
             </p>
-            <button className="mt-8 bg-heritage-gold text-ink-text px-10 py-4 rounded-DEFAULT font-label-sm text-label-sm font-bold hover:bg-secondary-container transition-colors uppercase tracking-wider cursor-pointer">
+            <Link to="/vault" className="mt-8 bg-heritage-gold text-ink-text px-10 py-4 rounded font-label-sm text-label-sm font-bold hover:bg-secondary-container transition-colors uppercase tracking-wider cursor-pointer text-center">
               Iniciar Archivo
-            </button>
+            </Link>
           </div>
         </section>
       </main>
