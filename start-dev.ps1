@@ -14,6 +14,6 @@ Write-Host "Levantando Frontend (React/Vite)..." -ForegroundColor Yellow
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$baseDir\apps\web'; npm run dev"
 
 Write-Host "¡Servicios iniciados en ventanas de PowerShell separadas!" -ForegroundColor Green
-Write-Host "La API estara disponible en http://localhost:3000"
-Write-Host "El Frontend estara disponible en http://localhost:5173"
+Write-Host "La API estara disponible en http://localhost:3001"
+Write-Host "El Frontend estara disponible en http://localhost:3000"
 Write-Host ""
