@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legado - Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#0d1c32",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "primary-container": "#0d1c32",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-primary": "#b9c7e4",
+                        "tertiary-fixed-dim": "#e7bf99",
+                        "on-tertiary-fixed-variant": "#5d4124",
+                        "border-subtle": "#E5E7EB",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed-variant": "#39475f",
+                        "paper-surface": "#FAFAFA",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#75777e",
+                        "on-surface-variant": "#44474d",
+                        "surface-dim": "#dadada",
+                        "on-secondary-container": "#745c00",
+                        "surface": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2b1701",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-surface": "#2f3131",
+                        "surface-tint": "#515f78",
+                        "surface-container-highest": "#e2e2e2",
+                        "heritage-gold": "#D4AF37",
+                        "outline-variant": "#c5c6cd",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "secondary-container": "#fed65b",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#241a00",
+                        "on-tertiary-container": "#9f7d5b",
+                        "ink-text": "#0A192F",
+                        "on-primary-container": "#76849f",
+                        "on-error-container": "#93000a",
+                        "primary": "#000000",
+                        "on-background": "#1a1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-container": "#2b1701",
+                        "surface-container-lowest": "#ffffff",
+                        "muted-ink": "#4B5563"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "stack-lg": "4rem",
+                        "gutter": "2rem",
+                        "stack-md": "1.5rem",
+                        "margin-mobile": "1rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-xl-mobile": ["\"Source Serif 4\""],
+                        "headline-xl": ["\"Source Serif 4\""],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="flex min-h-screen font-body-md text-body-md bg-paper-surface">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex bg-paper-surface text-ink-text h-screen w-64 fixed left-0 top-0 border-r border-border-subtle flex-col py-stack-md z-10">
+<div class="px-6 pb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-ink-text tracking-tight mb-8">Legado</h1>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-border-subtle bg-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-muted-ink">robot_2</span>
+</div>
+<div>
+<h2 class="font-label-md text-label-md font-semibold text-ink-text">New Agent</h2>
+<p class="font-label-sm text-label-sm text-muted-ink uppercase">AI Persona Draft</p>
+</div>
+</div>
+<button class="w-full bg-ink-text text-paper-surface py-2.5 rounded hover:bg-opacity-90 transition-colors font-label-md text-label-md uppercase tracking-wider">
+                Save Draft
+            </button>
+</div>
+<div class="flex-1 px-4 overflow-y-auto">
+<ul class="space-y-1">
+<!-- Active Tab: Configuration -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-ink-text font-bold border-l-2 border-heritage-gold pl-4 bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="font-label-md text-label-md">Configuration</span>
+</a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-ink hover:bg-surface-container-high transition-colors pl-4" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Personality</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-ink hover:bg-surface-container-high transition-colors pl-4" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label-md text-label-md">Knowledge</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-ink hover:bg-surface-container-high transition-colors pl-4" href="#">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+<span class="font-label-md text-label-md">Access</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="px-4 mt-auto pt-4 border-t border-border-subtle">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-ink hover:bg-surface-container-high transition-colors pl-4" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-ink hover:bg-surface-container-high transition-colors pl-4" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-64 flex-1 flex flex-col md:flex-row h-screen overflow-hidden">
+<!-- Left/Center: Form Configuration -->
+<section class="flex-1 overflow-y-auto p-gutter lg:p-stack-lg bg-background border-r border-border-subtle">
+<div class="max-w-2xl mx-auto">
+<header class="mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-ink-text mb-4">Builder</h2>
+<p class="font-body-lg text-body-lg text-muted-ink">Define the core attributes and knowledge access for your new AI persona.</p>
+</header>
+<form class="space-y-stack-md">
+<!-- Section 1: Name -->
+<div class="group">
+<label class="block font-label-sm text-label-sm text-ink-text uppercase mb-2" for="agent-name">Nombre del Agente</label>
+<input class="w-full bg-paper-surface border border-border-subtle rounded-DEFAULT px-4 py-3 font-body-md text-ink-text focus:outline-none focus:border-heritage-gold focus:ring-1 focus:ring-heritage-gold transition-colors placeholder:text-muted-ink/50" id="agent-name" placeholder="e.g., Abuelo Juan" type="text"/>
+</div>
+<!-- Section 2: Personality -->
+<div class="group">
+<label class="block font-label-sm text-label-sm text-ink-text uppercase mb-2" for="agent-personality">Personalidad</label>
+<p class="font-label-sm text-label-sm text-muted-ink mb-3 normal-case">Describe the tone, mannerisms, and perspective.</p>
+<textarea class="w-full bg-paper-surface border border-border-subtle rounded-DEFAULT px-4 py-3 font-body-md text-ink-text focus:outline-none focus:border-heritage-gold focus:ring-1 focus:ring-heritage-gold transition-colors resize-y placeholder:text-muted-ink/50" id="agent-personality" placeholder="Empático, Historiador, Formal..." rows="4"></textarea>
+</div>
+<!-- Section 3: Knowledge Sources -->
+<div class="group">
+<div class="flex justify-between items-end mb-4">
+<div>
+<label class="block font-label-sm text-label-sm text-ink-text uppercase mb-2">Fuentes de Conocimiento</label>
+<p class="font-label-sm text-label-sm text-muted-ink normal-case">Connected folders from the Human Vault.</p>
+</div>
+<button class="flex items-center gap-2 text-ink-text hover:text-heritage-gold transition-colors font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span>
+                                Add Source
+                            </button>
+</div>
+<div class="space-y-3">
+<!-- Source Item 1 -->
+<div class="flex items-center justify-between p-4 bg-paper-surface border border-border-subtle rounded-DEFAULT group-hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-muted-ink" style="font-size: 24px;">folder_special</span>
+<div>
+<h4 class="font-label-md text-label-md text-ink-text font-semibold">Entrevistas Abuelo</h4>
+<p class="font-label-sm text-label-sm text-muted-ink">12 Audio files, 4 Transcripts</p>
+</div>
+</div>
+<button class="text-muted-ink hover:text-error transition-colors p-2 rounded-full hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+</button>
+</div>
+<!-- Source Item 2 -->
+<div class="flex items-center justify-between p-4 bg-paper-surface border border-border-subtle rounded-DEFAULT group-hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-muted-ink" style="font-size: 24px;">description</span>
+<div>
+<h4 class="font-label-md text-label-md text-ink-text font-semibold">Diarios 1950</h4>
+<p class="font-label-sm text-label-sm text-muted-ink">24 Scanned pages</p>
+</div>
+</div>
+<button class="text-muted-ink hover:text-error transition-colors p-2 rounded-full hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 4: Access Level -->
+<div class="group pt-4">
+<label class="block font-label-sm text-label-sm text-ink-text uppercase mb-4">Nivel de Acceso</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Option 1 -->
+<label class="relative flex cursor-pointer rounded-DEFAULT border border-border-subtle bg-paper-surface p-4 focus:outline-none hover:bg-surface transition-colors">
+<input checked="" class="peer sr-only" name="access_level" type="radio" value="privado"/>
+<div class="flex w-full items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-muted-ink peer-checked:text-heritage-gold" style="font-size: 20px;">lock</span>
+<span class="font-label-md text-label-md text-ink-text">Privado</span>
+</div>
+</div>
+<div class="absolute inset-0 rounded-DEFAULT border-2 border-transparent peer-checked:border-heritage-gold pointer-events-none transition-colors"></div>
+</label>
+<!-- Option 2 -->
+<label class="relative flex cursor-pointer rounded-DEFAULT border border-border-subtle bg-paper-surface p-4 focus:outline-none hover:bg-surface transition-colors">
+<input class="peer sr-only" name="access_level" type="radio" value="familiar"/>
+<div class="flex w-full items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-muted-ink peer-checked:text-heritage-gold" style="font-size: 20px;">group</span>
+<span class="font-label-md text-label-md text-ink-text">Familiar</span>
+</div>
+</div>
+<div class="absolute inset-0 rounded-DEFAULT border-2 border-transparent peer-checked:border-heritage-gold pointer-events-none transition-colors"></div>
+</label>
+<!-- Option 3 -->
+<label class="relative flex cursor-pointer rounded-DEFAULT border border-border-subtle bg-paper-surface p-4 focus:outline-none hover:bg-surface transition-colors">
+<input class="peer sr-only" name="access_level" type="radio" value="publico"/>
+<div class="flex w-full items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-muted-ink peer-checked:text-heritage-gold" style="font-size: 20px;">public</span>
+<span class="font-label-md text-label-md text-ink-text">Público</span>
+</div>
+</div>
+<div class="absolute inset-0 rounded-DEFAULT border-2 border-transparent peer-checked:border-heritage-gold pointer-events-none transition-colors"></div>
+</label>
+</div>
+</div>
+<div class="pt-8 border-t border-border-subtle flex justify-end">
+<button class="bg-heritage-gold text-paper-surface px-8 py-3 rounded-DEFAULT font-label-md text-label-md uppercase tracking-wider hover:bg-secondary transition-colors shadow-sm" type="submit">
+                            Save Agent
+                        </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Right: Chat Preview -->
+<aside class="w-full md:w-[400px] lg:w-[480px] bg-paper-surface flex flex-col border-t md:border-t-0 md:border-l border-border-subtle shrink-0">
+<!-- Chat Header -->
+<header class="p-6 border-b border-border-subtle flex items-center gap-4 bg-paper-surface z-10">
+<div class="w-10 h-10 rounded-full border border-border-subtle bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-ink-text">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-ink-text text-lg">Preview</h3>
+<p class="font-label-sm text-label-sm text-muted-ink">Test your persona in real-time</p>
+</div>
+</header>
+<!-- Chat Messages -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-lowest">
+<!-- System/AI Message -->
+<div class="flex gap-4 max-w-[85%]">
+<div class="w-8 h-8 rounded-full border border-border-subtle bg-surface flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-muted-ink" style="font-size: 16px;">robot_2</span>
+</div>
+<div class="bg-surface border border-border-subtle p-4 rounded-xl rounded-tl-sm shadow-sm">
+<p class="font-body-md text-body-md text-ink-text">Hola Mateo, estoy listo para explorar tu legado. ¿Por dónde empezamos?</p>
+</div>
+</div>
+<!-- Placeholder for future user message to show context -->
+<div class="flex gap-4 max-w-[85%] ml-auto justify-end opacity-50 hidden">
+<div class="bg-ink-text p-4 rounded-xl rounded-tr-sm shadow-sm">
+<p class="font-body-md text-body-md text-paper-surface">Cuéntame sobre el abuelo.</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-6 border-t border-border-subtle bg-paper-surface">
+<div class="relative">
+<textarea class="w-full bg-surface border border-border-subtle rounded-lg pl-4 pr-12 py-3 font-body-md text-ink-text focus:outline-none focus:border-heritage-gold focus:ring-1 focus:ring-heritage-gold transition-colors resize-none placeholder:text-muted-ink/50" placeholder="Type a message to test..." rows="2"></textarea>
+<button class="absolute right-3 bottom-3 text-heritage-gold hover:text-secondary transition-colors p-1 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined fill-icon" style="font-size: 24px;">send</span>
+</button>
+</div>
+<p class="text-center font-label-sm text-label-sm text-muted-ink mt-3">Interactions here are not saved to history.</p>
+</div>
+</aside>
+</main>
+</body></html>

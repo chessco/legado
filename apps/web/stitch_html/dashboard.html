@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legado - Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Source Serif 4 & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;500;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Brand Anchors -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-surface-variant": "#44474d",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-surface": "#2f3131",
+                        "on-primary-container": "#76849f",
+                        "primary": "#000000",
+                        "surface-tint": "#515f78",
+                        "on-secondary-container": "#745c00",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#0d1c32",
+                        "error": "#ba1a1a",
+                        "border-subtle": "#E5E7EB",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-container": "#2b1701",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "tertiary": "#000000",
+                        "paper-surface": "#FAFAFA",
+                        "on-tertiary-fixed": "#2b1701",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "tertiary-fixed-dim": "#e7bf99",
+                        "heritage-gold": "#D4AF37",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#39475f",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-high": "#e8e8e8",
+                        "on-background": "#1a1c1c",
+                        "ink-text": "#0A192F",
+                        "surface-container-low": "#f3f3f3",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e2e2e2",
+                        "muted-ink": "#4B5563",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0d1c32",
+                        "on-tertiary-fixed-variant": "#5d4124",
+                        "on-tertiary-container": "#9f7d5b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline": "#75777e",
+                        "surface-dim": "#dadada",
+                        "inverse-primary": "#b9c7e4",
+                        "secondary-fixed": "#ffe088",
+                        "outline-variant": "#c5c6cd",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "2rem",
+                        "container-max": "1200px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1.5rem",
+                        "stack-lg": "4rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["\"Source Serif 4\""],
+                        "headline-xl": ["\"Source Serif 4\""],
+                        "label-md": ["Inter"],
+                        "headline-xl-mobile": ["\"Source Serif 4\""],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #FAFAFA; color: #1a1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Subtle scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c5c6cd; }
+    </style>
+</head>
+<body class="font-body-md text-body-md flex min-h-screen bg-paper-surface">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface-dim font-body-md text-body-md h-screen w-64 fixed left-0 top-0 border-r border-border-subtle dark:border-outline-variant flat no shadows flex flex-col h-full py-8 gap-stack-md z-50">
+<div class="px-gutter mb-4">
+<h1 class="font-headline-md text-headline-md font-bold text-ink-text dark:text-inverse-on-surface">Legado</h1>
+<p class="text-muted-ink text-label-sm uppercase tracking-wider mt-1">Knowledge Preservation</p>
+</div>
+<div class="flex-grow flex flex-col gap-2">
+<!-- Active Tab: Home -->
+<a class="flex items-center gap-3 py-2 text-ink-text dark:text-primary-fixed font-semibold border-l-2 border-heritage-gold pl-4 bg-surface-container-low transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 py-2 text-muted-ink dark:text-on-surface-variant pl-4 hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Vault</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-muted-ink dark:text-on-surface-variant pl-4 hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">archive</span>
+<span>Archive</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-muted-ink dark:text-on-surface-variant pl-4 hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">mic</span>
+<span>Interviews</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-muted-ink dark:text-on-surface-variant pl-4 hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="px-6 mt-auto">
+<button class="w-full bg-ink-text text-white py-3 px-4 rounded flex items-center justify-center gap-2 hover:bg-opacity-90 transition-colors font-label-md">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Entry
+            </button>
+<div class="mt-6 flex items-center gap-3 pt-6 border-t border-border-subtle">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a subtle, high-key minimalist silhouette of a person against a bright white background, suitable for a sophisticated digital archive UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACnZOK_Z34mqCpEvOxduTiRkEX5djGllN09hs4BKmNEm6IRtwCykWS7q7dfZbaBNTjOnNxbJGJRZv0yntiAsGyIvf0fsk_GVVhY1_t6Nkv35qSWaWLjviwUttKF47ll7hjB4H181NNsalgyQ47jxiIDLYFd8MEuVPJCAGgoZNJ9Q0TXevGBQPIQzvJQ5_5effWc_3I9lFLSAz4JJmUFhMcZFXEaA-6CH1mFeSGnFdAAqa9bZzCGsWBs_8OVPQZJLeiiVMMX4sDPKw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-ink-text">Mateo Valdés</span>
+<span class="font-label-sm text-muted-ink">Pro Plan</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-paper-surface/80 dark:bg-surface/80 backdrop-blur-md font-headline-md text-headline-md docked full-width top-0 sticky border-b border-border-subtle dark:border-outline-variant flat no shadows flex justify-between items-center w-full px-gutter h-16 max-w-full z-40">
+<div class="font-headline-md text-headline-md font-black text-ink-text dark:text-on-primary-fixed">Dashboard</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted-ink text-[18px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface border border-border-subtle rounded-full text-label-md w-64 focus:outline-none focus:border-ink-text transition-colors" placeholder="Buscar en el archivo..." type="text"/>
+</div>
+<button class="text-muted-ink hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-muted-ink hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-gutter max-w-container-max mx-auto w-full flex flex-col gap-stack-lg pb-24">
+<!-- Welcome Header -->
+<section class="mt-8">
+<h2 class="font-headline-xl text-headline-xl text-ink-text">Buenas noches, Mateo.</h2>
+<p class="font-headline-md text-headline-md text-muted-ink mt-2">Tu legado sigue creciendo.</p>
+</section>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<!-- Metric Card 1 -->
+<div class="bg-surface border border-border-subtle p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm uppercase tracking-wider text-muted-ink">Historias</span>
+<span class="material-symbols-outlined text-ink-text opacity-50">auto_stories</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-ink-text block">42</span>
+<span class="font-label-sm text-muted-ink mt-1 block">capturadas</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface border border-border-subtle p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm uppercase tracking-wider text-muted-ink">Grabación</span>
+<span class="material-symbols-outlined text-ink-text opacity-50">mic</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-ink-text block">18.5</span>
+<span class="font-label-sm text-muted-ink mt-1 block">horas totales</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface border border-border-subtle p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm uppercase tracking-wider text-muted-ink">Documentos</span>
+<span class="material-symbols-outlined text-ink-text opacity-50">description</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-ink-text block">124</span>
+<span class="font-label-sm text-muted-ink mt-1 block">almacenados</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface border border-border-subtle p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm uppercase tracking-wider text-muted-ink">Red</span>
+<span class="material-symbols-outlined text-ink-text opacity-50">group</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-ink-text block">8</span>
+<span class="font-label-sm text-muted-ink mt-1 block">personas</span>
+</div>
+</div>
+<!-- Metric Card 5: Progress -->
+<div class="bg-ink-text text-white p-6 flex flex-col justify-between relative overflow-hidden">
+<!-- Subtle background pattern -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 16px 16px;"></div>
+<div class="relative z-10 flex items-center justify-between mb-2">
+<span class="font-label-sm uppercase tracking-wider text-primary-fixed-dim">Progreso</span>
+<span class="material-symbols-outlined text-heritage-gold">military_tech</span>
+</div>
+<div class="relative z-10 flex items-end justify-between mt-auto">
+<div>
+<span class="font-headline-lg text-headline-lg text-white block">65%</span>
+<span class="font-label-sm text-primary-fixed-dim mt-1 block">fase actual</span>
+</div>
+<!-- Simple visual progress indicator -->
+<div class="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center relative">
+<svg class="w-full h-full -rotate-90 absolute" viewbox="0 0 36 36">
+<path class="text-heritage-gold" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Widgets Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Column: Recent Activity & Active Projects (Span 2) -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Proyectos Activos -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-ink-text border-b border-border-subtle pb-2 w-full flex justify-between">
+                                Proyectos activos
+                                <button class="text-muted-ink hover:text-ink-text text-label-sm font-label-sm uppercase tracking-wider flex items-center gap-1">Ver todos <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Project Card 1 -->
+<div class="bg-surface border border-border-subtle p-6 hover:border-ink-text/30 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-8">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-ink-text text-[20px]">account_tree</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-low border border-border-subtle font-label-sm text-muted-ink text-[10px] uppercase">En curso</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-ink-text mb-2 group-hover:text-heritage-gold transition-colors">Historia Familiar de los García</h4>
+<p class="text-muted-ink font-body-md text-[14px] line-clamp-2">Recopilación de documentos y fotografías desde la llegada a Veracruz en 1920.</p>
+<div class="mt-6 w-full bg-surface-container-high h-1">
+<div class="bg-ink-text h-1 w-3/4"></div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface border border-border-subtle p-6 hover:border-ink-text/30 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-8">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-ink-text text-[20px]">folder_special</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-low border border-border-subtle font-label-sm text-muted-ink text-[10px] uppercase">Revisión</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-ink-text mb-2 group-hover:text-heritage-gold transition-colors">Archivo Profesional 1990-2020</h4>
+<p class="text-muted-ink font-body-md text-[14px] line-clamp-2">Digitalización de notas de campo, diarios y correspondencia académica.</p>
+<div class="mt-6 w-full bg-surface-container-high h-1">
+<div class="bg-ink-text h-1 w-1/3"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actividad Reciente -->
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md text-ink-text border-b border-border-subtle pb-2 mb-6">Actividad reciente</h3>
+<div class="flex flex-col relative before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-border-subtle">
+<!-- Timeline Item 1 -->
+<div class="flex gap-6 mb-6 relative">
+<div class="w-6 h-6 rounded-full bg-paper-surface border-2 border-heritage-gold z-10 flex-shrink-0 mt-1"></div>
+<div class="flex-1 bg-surface border border-border-subtle p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md font-medium text-ink-text">Entrevista con abuelo Juan grabada</span>
+<span class="font-label-sm text-muted-ink">Hoy, 10:30 AM</span>
+</div>
+<p class="text-muted-ink font-body-md text-[14px]">Sesión de 45 minutos. Etiquetada bajo 'Infancia' y 'Guerra Civil'.</p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-6 mb-6 relative">
+<div class="w-6 h-6 rounded-full bg-paper-surface border-2 border-border-subtle z-10 flex-shrink-0 mt-1"></div>
+<div class="flex-1 bg-surface border border-border-subtle p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md font-medium text-ink-text">Documento de herencia subido</span>
+<span class="font-label-sm text-muted-ink">Ayer</span>
+</div>
+<p class="text-muted-ink font-body-md text-[14px]">PDF escaneado. 12 páginas. Pendiente de transcripción.</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex gap-6 relative">
+<div class="w-6 h-6 rounded-full bg-paper-surface border-2 border-border-subtle z-10 flex-shrink-0 mt-1"></div>
+<div class="flex-1 bg-surface border border-border-subtle p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md font-medium text-ink-text">Nueva persona añadida: Tía Carmen</span>
+<span class="font-label-sm text-muted-ink">Lun, 14 Mar</span>
+</div>
+<p class="text-muted-ink font-body-md text-[14px]">Árbol genealógico actualizado. Rama materna.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column: Próximas Entrevistas -->
+<div class="lg:col-span-1">
+<div class="bg-surface-bright border border-border-subtle p-6 sticky top-24">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-ink-text">calendar_today</span>
+<h3 class="font-headline-md text-[20px] text-ink-text">Próximas entrevistas</h3>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Schedule Item 1 -->
+<div class="border border-border-subtle bg-paper-surface p-4 border-l-4 border-l-heritage-gold">
+<div class="font-label-sm text-heritage-gold uppercase tracking-wider mb-2">Mañana, 16:00 h</div>
+<h4 class="font-label-md text-ink-text font-semibold mb-1">Memorias Universitarias</h4>
+<p class="text-muted-ink font-body-md text-[13px] flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                                    Dr. Roberto Silva
+                                </p>
+<div class="flex gap-2">
+<button class="flex-1 border border-border-subtle py-1.5 text-label-sm font-label-sm hover:bg-surface-container-low transition-colors">Reprogramar</button>
+<button class="flex-1 bg-ink-text text-white py-1.5 text-label-sm font-label-sm hover:bg-opacity-90 transition-colors">Iniciar</button>
+</div>
+</div>
+<!-- Schedule Item 2 -->
+<div class="border border-border-subtle bg-paper-surface p-4">
+<div class="font-label-sm text-muted-ink uppercase tracking-wider mb-2">Jueves, 24 Mar - 10:00 h</div>
+<h4 class="font-label-md text-ink-text font-semibold mb-1">Recetas de la Abuela (Parte 2)</h4>
+<p class="text-muted-ink font-body-md text-[13px] flex items-center gap-1 mb-3">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                                    Marta García
+                                </p>
+<button class="w-full border border-border-subtle py-1.5 text-label-sm font-label-sm text-muted-ink hover:bg-surface-container-low transition-colors">Ver detalles</button>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-dashed border-border-subtle text-muted-ink font-label-sm uppercase tracking-wider hover:border-ink-text hover:text-ink-text transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                            Agendar sesión
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>
