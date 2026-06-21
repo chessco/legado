@@ -3,14 +3,18 @@ import LandingPage from './pages/LandingPage';
 import { MainLayout } from './components/MainLayout';
 import { HomeDashboard } from './pages/HomeDashboard';
 import { VaultDashboard } from './pages/VaultDashboard';
-import { ArchivePage } from './pages/ArchivePage';
+import { StoriesPage } from './pages/StoriesPage';
+import { PersonsPage } from './pages/PersonsPage';
+import { TimelinePage } from './pages/TimelinePage';
 import { InterviewsPage } from './pages/InterviewsPage';
-import { SettingsPage } from './pages/SettingsPage';
-import { Marketplace } from './pages/Marketplace';
-import { PublicProfile } from './pages/PublicProfile';
 import { StoryBuilder } from './pages/StoryBuilder';
-import { AIBuilder } from './pages/AIBuilder';
-import { AIStudio } from './pages/AIStudio';
+import { AgentsPage } from './pages/AgentsPage';
+import { CommunityPage } from './pages/CommunityPage';
+import { CuratorsPage } from './pages/CuratorsPage';
+import { AnalyticsPage } from './pages/AnalyticsPage';
+import { SettingsPage } from './pages/SettingsPage';
+import { PublicProfile } from './pages/PublicProfile';
+import { KnowledgeMapPage } from './pages/KnowledgeMapPage';
 import { Onboarding } from './pages/Onboarding';
 import './index.css';
 
@@ -18,48 +22,61 @@ export default function App() {
   return (
     <Router>
       <Routes>
+        {/* Public / Landing routes (no sidebar) */}
         <Route path="/" element={<LandingPage />} />
-        
-        {/* App Routes wrapped in MainLayout */}
-        <Route path="/home" element={
-          <MainLayout>
-            <HomeDashboard />
-          </MainLayout>
-        } />
-        <Route path="/vault" element={
-          <MainLayout>
-            <VaultDashboard />
-          </MainLayout>
-        } />
-        <Route path="/archive" element={
-          <MainLayout>
-            <ArchivePage />
-          </MainLayout>
-        } />
-        <Route path="/interviews" element={
-          <MainLayout>
-            <InterviewsPage />
-          </MainLayout>
-        } />
-        <Route path="/settings" element={
-          <MainLayout>
-            <SettingsPage />
-          </MainLayout>
-        } />
-        
-        {/* Independent Routes */}
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/profile" element={<PublicProfile />} />
-        <Route path="/story-builder" element={<StoryBuilder />} />
-        <Route path="/ai-builder" element={<AIBuilder />} />
-        <Route path="/ai-studio" element={<AIStudio />} />
         <Route path="/onboarding" element={<Onboarding />} />
-        
-        {/* We will add more routes here for AI, etc. */}
+        <Route path="/profile" element={<PublicProfile />} />
+
+        {/* App routes — all wrapped in MainLayout for unified vertical sidebar */}
+        <Route path="/inicio" element={
+          <MainLayout><HomeDashboard /></MainLayout>
+        } />
+        <Route path="/boveda" element={
+          <MainLayout><VaultDashboard /></MainLayout>
+        } />
+        <Route path="/historias" element={
+          <MainLayout><StoriesPage /></MainLayout>
+        } />
+        <Route path="/personas" element={
+          <MainLayout><PersonsPage /></MainLayout>
+        } />
+        <Route path="/linea-de-tiempo" element={
+          <MainLayout><TimelinePage /></MainLayout>
+        } />
+        <Route path="/entrevistas" element={
+          <MainLayout><InterviewsPage /></MainLayout>
+        } />
+        <Route path="/constructor" element={
+          <MainLayout><StoryBuilder /></MainLayout>
+        } />
+        <Route path="/agentes" element={
+          <MainLayout><AgentsPage /></MainLayout>
+        } />
+        <Route path="/comunidad" element={
+          <MainLayout><CommunityPage /></MainLayout>
+        } />
+        <Route path="/curadores" element={
+          <MainLayout><CuratorsPage /></MainLayout>
+        } />
+        <Route path="/analitica" element={
+          <MainLayout><AnalyticsPage /></MainLayout>
+        } />
+        <Route path="/configuracion" element={
+          <MainLayout><SettingsPage /></MainLayout>
+        } />
+        <Route path="/mapa-conocimiento" element={
+          <MainLayout><KnowledgeMapPage /></MainLayout>
+        } />
+
+        {/* 404 */}
         <Route path="*" element={
-          <div className="flex items-center justify-center min-h-screen bg-paper-surface">
-            <h1 className="text-headline-lg font-headline-lg">404 - Not Found</h1>
-          </div>
+          <MainLayout>
+            <div className="flex flex-col items-center justify-center py-32 gap-4">
+              <span className="material-symbols-outlined text-6xl text-muted-ink">search_off</span>
+              <h1 className="text-headline-xl font-headline-xl text-ink-text">404 — Página no encontrada</h1>
+              <p className="text-muted-ink font-body-md">La página que buscas no existe en el archivo histórico.</p>
+            </div>
+          </MainLayout>
         } />
       </Routes>
     </Router>

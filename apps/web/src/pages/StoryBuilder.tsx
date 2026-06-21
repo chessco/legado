@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 interface Chapter {
   id: string;
@@ -89,25 +88,7 @@ export const StoryBuilder: React.FC = () => {
   };
 
   return (
-    <div className="bg-paper-surface text-ink-text font-body-md h-screen flex flex-col overflow-hidden">
-      {/* TopNavBar */}
-      <nav className="bg-surface dark:bg-surface-container-lowest w-full h-16 border-b border-border-subtle dark:border-outline-variant flex justify-between items-center px-gutter sticky top-0 z-50">
-        <div className="flex items-center gap-stack-md">
-          <Link to="/" className="font-headline-md text-headline-md font-bold text-ink-text dark:text-inverse-on-surface tracking-tight">Legado</Link>
-          <div className="hidden md:flex gap-stack-md ml-stack-lg">
-            <a className="text-primary dark:text-inverse-primary border-b-2 border-heritage-gold pb-1 font-label-md text-label-md cursor-pointer transition-opacity active:opacity-70" href="#">Drafts</a>
-            <Link className="text-muted-ink dark:text-on-surface-variant hover:text-primary dark:hover:text-on-surface transition-colors font-label-md text-label-md cursor-pointer transition-opacity active:opacity-70" to="/archive">Archive</Link>
-            <Link className="text-muted-ink dark:text-on-surface-variant hover:text-primary dark:hover:text-on-surface transition-colors font-label-md text-label-md cursor-pointer transition-opacity active:opacity-70" to="/settings">Settings</Link>
-          </div>
-        </div>
-        <div className="flex items-center gap-stack-sm">
-          <button className="bg-ink-text text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:bg-opacity-90 transition-opacity">Publish</button>
-          <Link to="/settings" className="text-muted-ink hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
-            <span className="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-          </Link>
-        </div>
-      </nav>
-
+    <div className="bg-paper-surface text-ink-text font-body-md flex flex-col" style={{ height: 'calc(100vh - 3.5rem)' }}>
       {/* Main Layout Container */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Sidebar: Outline (Manuscrito) */}
@@ -115,7 +96,7 @@ export const StoryBuilder: React.FC = () => {
           <div className="p-6 border-b border-border-subtle">
             <h2 className="font-label-sm text-label-sm text-muted-ink uppercase tracking-wider mb-4">Manuscrito</h2>
             <div className="flex items-center justify-between text-ink-text hover:bg-surface-variant p-2 rounded cursor-pointer transition-colors -mx-2">
-              <span className="font-label-md text-label-md">The Eternal City</span>
+              <span className="font-label-md text-label-md">El Legado de los García</span>
               <span className="material-symbols-outlined text-sm">unfold_more</span>
             </div>
           </div>
@@ -158,7 +139,7 @@ export const StoryBuilder: React.FC = () => {
               className="mt-4 flex items-center gap-2 text-muted-ink hover:text-ink-text p-2 rounded w-full justify-center border border-dashed border-border-subtle hover:border-outline-variant transition-colors shrink-0"
             >
               <span className="material-symbols-outlined text-sm">add</span>
-              <span className="font-label-md text-label-md">Add Chapter</span>
+              <span className="font-label-md text-label-md">Añadir Capítulo</span>
             </button>
           </div>
         </aside>
@@ -225,7 +206,7 @@ export const StoryBuilder: React.FC = () => {
               <span className="material-symbols-outlined text-muted-ink text-sm flex items-center">expand_more</span>
             </div>
             <div className="ml-auto text-muted-ink font-label-sm text-label-sm">
-              Saved just now
+              Guardado ahora
             </div>
           </div>
 

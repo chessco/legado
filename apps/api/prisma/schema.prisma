@@ -23,43 +23,50 @@ model Role {
 }
 
 model User {
-  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  email         String    @unique
-  passwordHash  String
-  roleId        String    @db.Uuid
-  role          Role      @relation(fields: [roleId], references: [id])
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id               String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email            String    @unique
+  passwordHash     String
+  roleId           String    @db.Uuid
+  role             Role      @relation(fields: [roleId], references: [id])
+  platformLanguage String    @default("es-MX")
+  region           String    @default("MX")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
-  projects      Project[]
-  curatorProfile Curator?
+  projects         Project[]
+  curatorProfile    Curator?
 }
 
 model Project {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  userId      String   @db.Uuid
-  user        User     @relation(fields: [userId], references: [id])
-  type        String   // PERSONAL, FAMILIAR, EMPRESARIAL, PROFESIONAL
-  title       String
-  description String?
-  status      String   @default("ACTIVE")
-  createdAt   DateTime @default(now())
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId             String   @db.Uuid
+  user               User     @relation(fields: [userId], references: [id])
+  type               String   // PERSONAL, FAMILIAR, EMPRESARIAL, PROFESIONAL
+  title              String
+  description        String?
+  primaryLanguage    String   @default("es-MX")
+  secondaryLanguages String[]
+  status             String   @default("ACTIVE")
+  createdAt          DateTime @default(now())
   
-  assets      Asset[]
-  interviews  Interview[]
-  books       Book[]
-  memories    Memory[]
+  assets             Asset[]
+  interviews         Interview[]
+  books              Book[]
+  memories           Memory[]
 }
 
 model Asset {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  projectId   String   @db.Uuid
-  project     Project  @relation(fields: [projectId], references: [id])
-  type        String   // PHOTO, VIDEO, AUDIO, DOCUMENT
-  fileUrl     String   // MinIO object path
-  bucket      String
-  metadata    Json?
-  createdAt   DateTime @default(now())
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  projectId          String   @db.Uuid
+  project            Project  @relation(fields: [projectId], references: [id])
+  type               String   // PHOTO, VIDEO, AUDIO, DOCUMENT
+  fileUrl            String   // MinIO object path
+  bucket             String
+  languageCode       String?
+  originalLanguage   String?
+  translatedVersions Json?
+  metadata           Json?
+  createdAt          DateTime @default(now())
 }
 
 model Interview {

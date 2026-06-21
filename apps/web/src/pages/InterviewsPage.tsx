@@ -13,6 +13,7 @@ interface Interview {
   duration: string;
   interviewer: string;
   interviewee: string;
+  language: string;
   isPlaying: boolean;
   transcripts: TranscriptSegment[];
 }
@@ -29,6 +30,7 @@ export const InterviewsPage: React.FC = () => {
       duration: '45:20',
       interviewer: 'Mateo García',
       interviewee: 'Juan García',
+      language: 'es-MX',
       isPlaying: false,
       transcripts: [
         { time: '00:12', speaker: 'Mateo', text: 'Abuelo, cuéntame de la finca en 1950. ¿Cómo eran los veranos en aquel entonces?' },
@@ -44,10 +46,25 @@ export const InterviewsPage: React.FC = () => {
       duration: '28:15',
       interviewer: 'Mateo García',
       interviewee: 'Luisa García',
+      language: 'es-MX',
       isPlaying: false,
       transcripts: [
         { time: '00:05', speaker: 'Mateo', text: 'Tía Luisa, ¿cómo recuerdas tu primer día de clases en Veracruz?' },
         { time: '00:25', speaker: 'Tía Luisa', text: 'Veracruz era tan diferente del campo... la humedad, la gente. La escuela era enorme, con muros de piedra blanca que daban al puerto. Recuerdo el sonido de los barcos por las tardes.' }
+      ]
+    },
+    {
+      id: '3',
+      title: 'Prof. Davis: Oxford 1995 Memories',
+      date: '15 Jan 2023',
+      duration: '35:10',
+      interviewer: 'Mateo García',
+      interviewee: 'Prof. Davis',
+      language: 'en-US',
+      isPlaying: false,
+      transcripts: [
+        { time: '00:10', speaker: 'Mateo', text: 'Professor Davis, could you describe the atmosphere in the lab when the project was first approved?' },
+        { time: '00:28', speaker: 'Prof. Davis', text: 'It was electrifying. We had very little funding, but the intellectual freedom was unlike anything I had experienced before or since.' }
       ]
     }
   ];
@@ -59,9 +76,9 @@ export const InterviewsPage: React.FC = () => {
       {/* Left Column: Interview List */}
       <div className="lg:col-span-5 flex flex-col gap-4">
         <div>
-          <h1 className="font-headline-xl text-headline-xl text-ink-text mb-2">Interviews</h1>
+          <h1 className="font-headline-xl text-headline-xl text-ink-text mb-2">Entrevistas</h1>
           <p className="font-body-lg text-body-lg text-muted-ink">
-            Oral history recordings, voice logs, and automated transcript generations.
+            Sesiones guiadas para capturar conocimiento y preservar experiencias de vida. El agente IA se adaptará al idioma principal del legado.
           </p>
         </div>
 
@@ -82,11 +99,16 @@ export const InterviewsPage: React.FC = () => {
                 }`}
               >
                 <div className="flex justify-between items-start">
-                  <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                    isActive ? 'bg-heritage-gold/20 text-heritage-gold' : 'bg-surface-container text-muted-ink'
-                  }`}>
-                    {interview.duration}
-                  </span>
+                  <div className="flex gap-2">
+                    <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                      isActive ? 'bg-heritage-gold/20 text-heritage-gold' : 'bg-surface-container text-muted-ink'
+                    }`}>
+                      {interview.duration}
+                    </span>
+                    <span className="px-2 py-1 rounded text-xs font-semibold bg-surface-container-lowest border border-border-subtle text-ink-text flex items-center gap-1">
+                      {interview.language === 'es-MX' ? '🇲🇽 ES' : '🇺🇸 EN'}
+                    </span>
+                  </div>
                   <span className="text-label-sm font-label-sm text-muted-ink">{interview.date}</span>
                 </div>
                 <h3 className="font-headline-md text-headline-md text-ink-text">{interview.title}</h3>
@@ -105,7 +127,13 @@ export const InterviewsPage: React.FC = () => {
       <div className="lg:col-span-7 bg-paper-surface border border-border-subtle rounded-lg p-6 flex flex-col gap-6 h-[calc(100vh-180px)] overflow-hidden shadow-sm">
         {/* Playback Controls */}
         <div className="border-b border-border-subtle pb-6 flex flex-col gap-4">
-          <h2 className="font-headline-md text-headline-md text-ink-text">{activeInterview.title}</h2>
+          <div className="flex justify-between items-start">
+            <h2 className="font-headline-md text-headline-md text-ink-text">{activeInterview.title}</h2>
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-lowest border border-border-subtle text-ink-text flex items-center gap-2">
+              <span className="material-symbols-outlined text-[14px]">language</span>
+              {activeInterview.language === 'es-MX' ? 'Español (México)' : 'English (US)'}
+            </span>
+          </div>
           
           <div className="flex items-center gap-4 bg-surface-container-low border border-border-subtle p-4 rounded-lg">
             <button
@@ -138,7 +166,13 @@ export const InterviewsPage: React.FC = () => {
 
         {/* Transcripts Area */}
         <div className="flex-1 overflow-y-auto pr-2 flex flex-col gap-4">
-          <h3 className="font-label-sm text-label-sm text-muted-ink uppercase tracking-wider">Automated Transcript</h3>
+          <div className="flex justify-between items-center">
+            <h3 className="font-label-sm text-label-sm text-muted-ink uppercase tracking-wider">Transcripción Automatizada</h3>
+            <span className="font-label-sm text-xs text-heritage-gold flex items-center gap-1">
+              <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
+              IA adaptada a {activeInterview.language === 'es-MX' ? 'Español' : 'Inglés'}
+            </span>
+          </div>
           <div className="flex flex-col gap-4">
             {activeInterview.transcripts.map((t, idx) => (
               <div key={idx} className="flex gap-4 border-l-2 border-border-subtle pl-4 py-1 hover:border-heritage-gold transition-colors">
@@ -155,3 +189,4 @@ export const InterviewsPage: React.FC = () => {
     </div>
   );
 };
+

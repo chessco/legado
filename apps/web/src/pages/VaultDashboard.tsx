@@ -79,8 +79,8 @@ export const VaultDashboard: React.FC = () => {
     <>
       {/* Header Section */}
       <div className="mb-stack-md">
-        <h1 className="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-ink-text mb-2">Human Vault</h1>
-        <p className="font-body-lg text-body-lg text-muted-ink max-w-2xl">A curated archive of personal history, preserving artifacts, memories, and voices for future generations.</p>
+        <h1 className="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-ink-text mb-2">Bóveda</h1>
+        <p className="font-body-lg text-body-lg text-muted-ink max-w-2xl">Un archivo histórico cuidadosamente preservado. El lugar donde tu historia familiar, experiencia y conocimiento perduran para las futuras generaciones.</p>
       </div>
 
       {/* Filters / Categories */}
@@ -270,7 +270,7 @@ export const VaultDashboard: React.FC = () => {
 
       {/* Empty Space at bottom for scrolling */}
       <div className="h-32 w-full flex items-center justify-center text-muted-ink font-label-sm text-label-sm uppercase tracking-widest mt-8">
-        Fin del Archivo
+        Fin del Archivo Histórico
       </div>
     </>
   );
